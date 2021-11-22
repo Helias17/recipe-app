@@ -3,15 +3,23 @@
   justify-content: center;
   padding: 30px;
 
+  &__box {
+    display: flex;
+  }
+
+  &__boxItem1 {
+    width: 300px;
+    padding-right: 15px;
+  }
+
   &__searchInput {
     height: 60px;
-    width: 300px;
+    width: 100%;
     font-size: 20px;
     font-family: Tahoma, Arial, sans-serif;
     border: 1px solid #EA355F;
     border-radius: 5px;
     box-sizing: border-box;
-    margin-right: 10px;
     padding: 0 10px;
     outline: 0;
   }
@@ -31,5 +39,19 @@
     &:hover {
       background-color: #f75077;
     }
+  }
+
+  &__error {
+    background-color: #A8AABC;
+    border-radius: 5px;
+    padding: 15px;
+  }
+
+  &__errorText {
+    display: block;
+    font-family: Tahoma, Arial, sans-serif;
+    font-size: 14px;
+    color: #fff;
+    margin: 0;
   }
 }
