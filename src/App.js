@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Search } from './components/search/Search';
 import { Recipe } from './components/recipe/Recipe';
+import { Preloader } from './components/preloader/Preloader';
 import css from './app.module.css';
 
 const App = () => {
@@ -11,15 +12,18 @@ const App = () => {
   const REQUEST = `https://api.edamam.com/api/recipes/v2?type=public&q=Pepperoni&app_id=${APP_ID}&app_key=${APP_KEY}`;
 
   const [recipes, setRecipes] = useState([]);
+  const [isPreloaderVisible, setPreloaderVisible] = useState(false);
 
   useEffect( () => {
-    getRecipes();
+    getRecipes(setPreloaderVisible);
   }, [] );
 
-  const getRecipes = async () => {
+  const getRecipes = async (setPreloaderVisible) => {
+    setPreloaderVisible(true);
     const response = await fetch(REQUEST);
     const recipes = await response.json();
     setRecipes(recipes.hits);
+    setPreloaderVisible(false);
     console.log(recipes);
   }
 
@@ -31,6 +35,7 @@ const App = () => {
       <div className={css.recipesWrapper}>
         {!!recipes.length && recipes.map( (recipeItem, index) => <Recipe recipeDetail={recipeItem} key={index} /> )}
       </div>
+      {isPreloaderVisible && <Preloader />}
     </div>
   );
 }
