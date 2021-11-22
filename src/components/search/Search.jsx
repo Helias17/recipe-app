@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import css from './search.module.scss';
 
-export const Search = () => {
+export const Search = (props) => {
 
   const INPUT_ERROR_1 = 'Search query mast be at least 3 symbols';
 
@@ -12,7 +12,10 @@ export const Search = () => {
     e.preventDefault();
     if (inputValue.length < 5) {
       setFormErrors([...formErrors, INPUT_ERROR_1])
+    } else {
+      props.showRecipes(inputValue);
     }
+
   }
 
   const handleInput = (e) => {

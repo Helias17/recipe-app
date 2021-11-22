@@ -11,12 +11,12 @@ const App = () => {
   const [isPreloaderVisible, setPreloaderVisible] = useState(false);
 
   useEffect( () => {
-    showRecipes(setPreloaderVisible);
+    showRecipes();
   }, [] );
 
-  const showRecipes = async (setPreloaderVisible) => {
+  const showRecipes = async (query) => {
     setPreloaderVisible(true);
-    const recipes = await getRecipes('spaghetti');
+    const recipes = await getRecipes(query);
     setRecipes(recipes.hits);
     setPreloaderVisible(false);
     console.log(recipes);
@@ -25,7 +25,7 @@ const App = () => {
   return (
     <div className="App">
       <header>Search over 2.3 millions recipes</header>
-      <Search />
+      <Search showRecipes={showRecipes} />
       <div className={css.recipesWrapper}>
         {!!recipes.length && recipes.map( (recipeItem, index) => <Recipe recipeDetail={recipeItem} key={index} /> )}
       </div>
