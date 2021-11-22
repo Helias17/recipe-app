@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import  { useEffect } from "react";
 
 /**
  * Hook that alerts clicks outside of the passed ref
@@ -22,7 +22,7 @@ export const useOutsideDetector = (ref, callback) => {
             // Unbind the event listener on clean up
             document.removeEventListener("mousedown", handleClickOutside);
         };
-    }, [ref]);
+    }, [ref, callback]);
 }
 
 /**

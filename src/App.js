@@ -26,6 +26,7 @@ const App = () => {
   
   return (
     <div className="App">
+      <header>Search over 2.3 millions recipes</header>
       <Search />
       <div className={css.recipesWrapper}>
         {!!recipes.length && recipes.map( (recipeItem, index) => <Recipe recipeDetail={recipeItem} key={index} /> )}

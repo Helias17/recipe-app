@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { useOutsideDetector } from '../../hooks/useOutsideDetector';
 import css from './recipe.module.scss';
 
@@ -19,6 +19,10 @@ export const Recipe = (props) => {
     setIngridientsVisible(!isIngridientsVisible);
   }
 
+  const showHideConsist = () => {
+    setConsistVisible(!isConsistVisible);
+  }
+
   const hideIngridients = () => {
     const timerId = setTimeout(() => {
       setIngridientsVisible(false);
@@ -26,24 +30,28 @@ export const Recipe = (props) => {
     }, 200);
   }
 
-  const showHideConsist = () => {
-    setConsistVisible(!isConsistVisible);
+  const hideConsist = () => {
+    const timerId = setTimeout(() => {
+      setConsistVisible(false);
+      clearTimeout(timerId);
+    }, 200);
   }
 
-  const ingridientsHeaderRef = useRef(null);
-  useOutsideDetector(ingridientsHeaderRef, hideIngridients);
+  const recipeRef = useRef(null);
+  useOutsideDetector(recipeRef, hideIngridients);
+  useOutsideDetector(recipeRef, hideConsist);
 
   return (
-    <div className={css.item}>
+    <div className={css.item} ref={recipeRef}>
       <h2 className={css.item__header}>{props.recipeDetail.recipe.label}</h2>
       <img src={props.recipeDetail.recipe.image} alt={props.recipeDetail.recipe.label} className={css.item__image} />
 
       <div className={css.item__infoBox}>
-        <p className={css.item__ingridientsHeader}
-          ref={ingridientsHeaderRef}
-          onClick={showHideIngridients}>Ingridients ({props.recipeDetail.recipe.ingredientLines.length})</p>
+        <p className={css.item__ingridientsHeader} onClick={showHideIngridients}>Ingridients ({props.recipeDetail.recipe.ingredientLines.length})</p>
         <ul className={ingridientsListClassName}>
-          {props.recipeDetail.recipe.ingredientLines.map(ingridient => <li className={css.item__ingridientsItem}>{ingridient}</li>)}
+          {props.recipeDetail.recipe.ingredientLines.map((ingridient, index) => (
+            <li key={index} className={css.item__ingridientsItem}>{ingridient}</li>
+          ))}
         </ul>
         <p className={css.item__consistHeader} onClick={showHideConsist}>Consist (per 100g)</p>
         <div className={consistTableClassName}>
