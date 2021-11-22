@@ -1,0 +1,10 @@
+@import-normalize;
+
+body {
+  background-color: #eee;
+}
+
+.recipesWrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
