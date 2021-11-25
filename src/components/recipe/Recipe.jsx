@@ -52,6 +52,11 @@ export const Recipe = (props) => {
     setMouseEnter(false);
   }
 
+  const hundredGramsRatio = props.recipeDetail.recipe.totalWeight / 100;
+  const fats = Math.floor(props.recipeDetail.recipe.totalNutrients.FAT.quantity / hundredGramsRatio);
+  const carbohydrates = Math.floor(props.recipeDetail.recipe.totalNutrients.CHOCDF.quantity / hundredGramsRatio);
+  const proteins = Math.floor(props.recipeDetail.recipe.totalNutrients.PROCNT.quantity / hundredGramsRatio);
+
   return (
     <div className={css.item} ref={recipeRef} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} >
       <RecipeHeader label={props.recipeDetail.recipe.label} isFullHeader={isMouseEnter} />
@@ -65,10 +70,18 @@ export const Recipe = (props) => {
         </ul>
         <p className={css.item__consistHeader} onClick={showHideConsist}>Consist (per 100g)</p>
         <div className={consistTableClassName}>
-          <p className={css.item__consistParam}>Fats:</p><p className={css.item__consistValue}>21 g</p>
-          <p className={css.item__consistParam}>Carbohydrates:</p><p className={css.item__consistValue}>65 g</p>
-          <p className={css.item__consistParam}>Proteins:</p><p className={css.item__consistValue}>18 g</p>
-          <p className={css.item__consistParam}>Calories:</p><p className={css.item__consistValue}>500 kcal</p>
+          <p className={css.item__consistParam}>Fats:</p><p className={css.item__consistValue}>
+            {fats} g
+          </p>
+          <p className={css.item__consistParam}>Carbohydrates:</p><p className={css.item__consistValue}>
+            {carbohydrates} g
+          </p>
+          <p className={css.item__consistParam}>Proteins:</p><p className={css.item__consistValue}>
+            {proteins} g
+          </p>
+          <p className={css.item__consistParam}>Calories:</p><p className={css.item__consistValue}>
+            {Math.floor(props.recipeDetail.recipe.calories / hundredGramsRatio)} kcal
+          </p>
         </div>
       </div>
 
