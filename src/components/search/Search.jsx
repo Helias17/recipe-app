@@ -11,7 +11,7 @@ export const Search = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (inputValue.length < 5) {
-      setFormErrors([...formErrors, INPUT_ERROR_1])
+      setFormErrors([...formErrors, INPUT_ERROR_1]);
     } else {
       props.showRecipes(inputValue);
     }
@@ -30,7 +30,7 @@ export const Search = (props) => {
           <div className={css.item__boxItem1}>
             <input
               type="text"
-              placeholder="search recipe"
+              placeholder="recipe name"
               className={css.item__searchInput}
               value={inputValue}
               onChange={handleInput}

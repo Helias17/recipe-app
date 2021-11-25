@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { useOutsideDetector } from '../../hooks/useOutsideDetector';
+import { RecipeHeader } from './recipeHeader/RecipeHeader';
 import css from './recipe.module.scss';
 
 export const Recipe = (props) => {
@@ -41,11 +42,20 @@ export const Recipe = (props) => {
   useOutsideDetector(recipeRef, hideIngridients);
   useOutsideDetector(recipeRef, hideConsist);
 
-  return (
-    <div className={css.item} ref={recipeRef}>
-      <h2 className={css.item__header}>{props.recipeDetail.recipe.label}</h2>
-      <img src={props.recipeDetail.recipe.image} alt={props.recipeDetail.recipe.label} className={css.item__image} />
+  const [isMouseEnter, setMouseEnter] = useState(false);
 
+  const handleMouseEnter = () => {
+    setMouseEnter(true);
+  }
+
+  const handleMouseLeave = () => {
+    setMouseEnter(false);
+  }
+
+  return (
+    <div className={css.item} ref={recipeRef} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} >
+      <RecipeHeader label={props.recipeDetail.recipe.label} isFullHeader={isMouseEnter} />
+      <img src={props.recipeDetail.recipe.image} alt={props.recipeDetail.recipe.label} className={css.item__image} />
       <div className={css.item__infoBox}>
         <p className={css.item__ingridientsHeader} onClick={showHideIngridients}>Ingridients ({props.recipeDetail.recipe.ingredientLines.length})</p>
         <ul className={ingridientsListClassName}>
