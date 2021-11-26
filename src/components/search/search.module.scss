@@ -25,6 +25,7 @@
   }
   
   &__searchSubmit {
+    position: relative;
     height: 60px;
     font-size: 20px;
     font-family: Tahoma, Arial, sans-serif;
@@ -41,6 +42,14 @@
     }
   }
 
+  &__countdown {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    color: #fff;
+    font-size: 11px;
+  }
+
   &__error {
     background-color: #A8AABC;
     border-radius: 5px;
@@ -54,4 +63,5 @@
     color: #fff;
     margin: 0;
   }
+
 }

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { SearchButton } from './searchButton/SearchButton';
 import css from './search.module.scss';
 
 export const Search = (props) => {
@@ -42,9 +43,7 @@ export const Search = (props) => {
             )}
           </div>
           <div>
-            <button type="submit" className={css.item__searchSubmit}>
-              Search
-            </button>
+            <SearchButton />
           </div>
         </div>
       </form>
