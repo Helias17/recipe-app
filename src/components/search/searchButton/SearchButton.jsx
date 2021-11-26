@@ -3,12 +3,12 @@ import css from '../search.module.scss';
 
 export const SearchButton = () => {
 
-  const [isButtonDisabled, setButtonState] = useState(false);
+  const [isButtonDisabled, setButtonDisabled] = useState(false);
   const [counter, setCounter] = useState(0);
-  const [isCountdownActive, setCountdown] = useState(false);
+  //const [isCountdownActive, setCountdown] = useState(false);
 
   const handleClick = () => {
-    // setTimeout(() => setButtonState(true), 100);
+    setTimeout(() => setButtonDisabled(true), 100);
     setCounter(6);
   }
 
@@ -16,6 +16,8 @@ export const SearchButton = () => {
     setTimeout(() => {
       if (counter > 0) {
         setCounter(counter - 1);
+      } else {
+        setButtonDisabled(false);
       }
     }, 1000);
   }, [counter])

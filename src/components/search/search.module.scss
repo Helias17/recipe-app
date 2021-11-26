@@ -37,8 +37,16 @@
     cursor: pointer;
     transition: 0.2s;
 
+    &:disabled {
+      background-color: rgba(#EA355F, 0.3);
+    }
+
     &:hover {
       background-color: #f75077;
+    }
+
+    &:disabled:hover {
+      background-color: rgba(#EA355F, 0.3);
     }
   }
 
