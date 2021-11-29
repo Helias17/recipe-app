@@ -12,3 +12,15 @@ export const getRecipes = async (query = 'pepperoni') => {
     alert('Error while getting recipes!');
   }
 }
+
+export const getMoreRecipes = async (url) => {
+  try {
+    const response = await fetch(url);
+    const recipes = await response.json();
+    return recipes;
+  }
+  catch(error) {
+    console.log('Error while getting more recipes :', error);
+    alert('Error while getting more recipes!');
+  }
+}

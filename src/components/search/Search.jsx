@@ -30,6 +30,7 @@ export const Search = (props) => {
         <div className={css.item__box}>
           <div className={css.item__boxItem1}>
             <input
+              autoFocus
               type="text"
               placeholder="recipe name"
               className={css.item__searchInput}
