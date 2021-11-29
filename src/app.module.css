@@ -21,3 +21,7 @@ body {
   font-size: 24px;
   color: #000;
 }
+
+.pageMain {
+  padding: 0 15px;
+}
