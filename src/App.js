@@ -5,7 +5,7 @@ import { Preloader } from './components/preloader/Preloader';
 import { getRecipes, getMoreRecipes } from './api/api';
 import { SearchResultCounter } from './components/search/searchResultCounter/SearchResultCounter';
 import { RecipeShowMoreButton } from './components/recipe/recipeShowMoreButton/RecipeShowMoreButton';
-import css from './app.module.css';
+import css from './app.module.scss';
 
 const App = () => {
 

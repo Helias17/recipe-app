@@ -14,12 +14,21 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0 15px;
+
+  @media (max-width: 590px) {
+    flex-direction: column;
+  }
 }
 
 .pageName {
   font-family: 'Pacifico', cursive;
   font-size: 24px;
   color: #000;
+
+  @media (max-width: 590px) {
+    font-size: 21px;
+  }
 }
 
 .pageMain {

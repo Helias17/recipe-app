@@ -1,7 +1,11 @@
 .item {
   display: flex;
   justify-content: center;
-  padding: 30px;
+  padding: 30px 0 30px 30px;
+
+  @media (max-width: 590px) {
+    padding: 10px;
+  }
 
   &__box {
     display: flex;
@@ -10,6 +14,10 @@
   &__boxItem1 {
     width: 300px;
     padding-right: 15px;
+
+    @media (max-width: 590px) {
+      width: 100%;
+    }
   }
 
   &__searchInput {
@@ -22,6 +30,11 @@
     box-sizing: border-box;
     padding: 0 10px;
     outline: 0;
+
+    @media (max-width: 590px) {
+      height: 40px;
+      font-size: 16px;
+    }
   }
   
   &__searchSubmit {
@@ -47,6 +60,11 @@
 
     &:disabled:hover {
       background-color: rgba(#EA355F, 0.3);
+    }
+
+    @media (max-width: 590px) {
+      height: 40px;
+      font-size: 16px;
     }
   }
 
